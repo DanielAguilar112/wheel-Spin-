@@ -1,38 +1,245 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* The dark background that covers the screen */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
+/* The actual pop-up box */
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal-content {
+  background: #1e1e1e; /* Darker modal background */
+  color: white;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  border: 2px solid #6c5ce7;
+  box-shadow: 0 0 30px rgba(108, 92, 231, 0.4);
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  color: #6c5ce7;
+  margin-bottom: 20px;
+}
+
+.close-modal-btn {
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.add-category-form {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.category-card-wrapper {
+  position: relative;
+}
+
+.delete-category-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff7675;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 5;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.delete-category-btn:hover {
+  background: #d63031;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.category-card {
+  background: #1e1e1e;      /* Dark Gray */
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  transition: all 0.2s;
+  border: 1px solid #333;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  background: #6c5ce7;
+  border-color: #a29bfe;
+}
+
+/* 3. Inputs and Buttons */
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #252525;
+  color: white;
+  margin-bottom: 10px;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+.back-button {
+  margin-bottom: 20px;
+  background: #333;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* App.css */
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: #121212; /* Deep Black */
+  color: #ffffff;           /* White text */
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wheel-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 40px auto;
+}
+
+.pointer {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  font-size: 40px;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #333;
+  position: relative;
+}
+
+.slice-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 50%; /* This reaches from the outer rim to the center */
+  width: 1px;
+  transform-origin: bottom center; /* Pivot point is the wheel center */
+  display: flex;
+  /* CHANGED: flex-start pulls text toward the outer rim */
+  justify-content: flex-start; 
+  align-items: center;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.label-text {
+  margin-top: 15px;
   color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,1); /* Stronger shadow for black bg */
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+
+.spin-button {
+  padding: 15px 40px;
+  font-size: 20px;
+  border-radius: 30px;
+  border: none;
+  background: #2d3436;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.spin-button:active {
+  transform: scale(0.95);
 }
+
+.winner-text {
+  color: #6c5ce7;
+  margin-top: 20px;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto;
+  max-width: 300px;
+}
+
+/* 4. Item List (Below the wheel) */
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #1e1e1e;
+  color: white;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.delete-btn {
+  color: #ff7675;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.wheel-container { position: relative; width: 320px; height: 320px; margin: 40px auto; }
+.wheel { width: 100%; height: 100%; border-radius: 50%; border: 6px solid #fff; position: relative; overflow: hidden; }
+.pointer { position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 100; font-size: 40px; }
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.close-modal-btn { background: #6c5ce7; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin-top: 20px; }
