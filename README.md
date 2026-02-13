@@ -1,74 +1,42 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 🎡 Decision Spin Wheel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sleek, dark-mode React application designed to help users make decisions through customizable spinning wheels. Built with a focus on smooth animations and persistent user data.
 
-## Available Scripts
+**🚀 [View Live Demo](https://wheel-spin-eight.vercel.app/)**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Custom Wheels:** Create multiple wheels for different categories (Food, Games, Activities).
+* **Persistent Storage:** Uses `localStorage` so your custom wheels are saved even if you refresh the browser.
+* **Dynamic UI:** Smooth spinning animations powered by CSS transitions and React state.
+* **Dark Mode:** A modern, accessible dark interface.
+* **Celebration Effects:** Integrated `canvas-confetti` for a rewarding winner experience.
+* **Fully Responsive:** Works seamlessly on mobile and desktop browsers.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **React.js** - UI Framework
+* **Framer Motion** - Smooth entrance animations
+* **Canvas-Confetti** - Celebration effects
+* **CSS3** - Custom styling and Flexbox layouts
+* **Vercel** - Deployment and Hosting
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you want to run this project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repo:**
+   ```bash
+   git clone [https://github.com/DanielAguilar112/wheel-Spin-.git](https://github.com/DanielAguilar112/wheel-Spin-.git)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# wheel-Spin-
->>>>>>> origin/main
+2. **updating website**
+    Stage changes: git add .
+    Commit your changes Give the update a "name" so you know what you changed :
+    git commit -m "Fixed text alignment and updated colors"
+    Push to github: git push origin master
