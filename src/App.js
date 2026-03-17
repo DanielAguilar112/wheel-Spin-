@@ -76,9 +76,8 @@ function App() {
     // segmentCenter ends up at the top (0deg).
     const targetAngle = 360 - segmentCenter;
 
-    // Add enough full rotations (5) so it spins visibly, and strip the
-    // accumulated offset from previous spins using (rotation % 360).
-    const newRotation = rotation - (rotation % 360) + targetAngle + 360 * 5;
+    // Add enough full rotations (10) so it feels fast immediately, easeOut handles deceleration
+    const newRotation = rotation - (rotation % 360) + targetAngle + 360 * 10;
 
     setRotation(newRotation);
     setWinner(null);
@@ -181,7 +180,7 @@ function App() {
         <div className="pointer">📍</div>
         <motion.div
           animate={{ rotate: rotation }}
-          transition={{ duration: 4, ease: [0.2, 0.9, 0.4, 1.0] }}
+          transition={{ duration: 4, ease: "easeOut" }}
           className="wheel"
           style={{
             background: `conic-gradient(${items.map((_, i) => 
