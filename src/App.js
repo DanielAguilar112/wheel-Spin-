@@ -27,6 +27,7 @@ function App() {
   const [rotation, setRotation] = useState(0);
   const [winner, setWinner] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('myWheels', JSON.stringify(allWheels));
@@ -62,6 +63,7 @@ function App() {
   };
 
   const spinWheel = () => {
+    if (isSpinning) return;
     // 1. Pick a random target segment first, then calculate the rotation to land on it
     const winningIndex = Math.floor(Math.random() * items.length);
     const segmentDegrees = 360 / items.length;
@@ -81,11 +83,13 @@ function App() {
     setRotation(newRotation);
     setWinner(null);
     setShowModal(false);
+    setIsSpinning(true);
 
-    // 2. Wait for the 4-second animation to finish, then reveal winner
+    // 2. Wait for the 4-second animation to finish + 200ms buffer, then reveal winner
     setTimeout(() => {
       setWinner(items[winningIndex]);
       setShowModal(true);
+      setIsSpinning(false);
 
       // --- SIDE CANNON CONFETTI ---
       const end = Date.now() + (2 * 1000); 
@@ -113,7 +117,7 @@ function App() {
           requestAnimationFrame(frame);
         }
       }());
-    }, 4000); 
+    }, 4200); 
   };
 
   // POP-UP COMPONENT
@@ -177,7 +181,7 @@ function App() {
         <div className="pointer">📍</div>
         <motion.div
           animate={{ rotate: rotation }}
-          transition={{ duration: 4, ease: [0.17, 0.67, 0.35, 1.0] }}
+          transition={{ duration: 4, ease: [0.2, 0.9, 0.4, 1.0] }}
           className="wheel"
           style={{
             background: `conic-gradient(${items.map((_, i) => 
@@ -196,7 +200,7 @@ function App() {
         </motion.div>
       </div>
 
-      <button onClick={spinWheel} className="spin-button">SPIN</button>
+      <button onClick={spinWheel} className="spin-button" disabled={isSpinning} style={{ opacity: isSpinning ? 0.5 : 1, cursor: isSpinning ? 'not-allowed' : 'pointer' }}>SPIN</button>
 
       <form onSubmit={addOption} style={{ marginTop: '30px' }}>
         <input 
