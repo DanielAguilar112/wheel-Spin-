@@ -71,7 +71,7 @@ function App() {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
       // The 90 accounts for the pin being at the top (12 o'clock)
-const winningIndex = Math.floor(((actualDegrees + 90) % 360) / segmentDegrees);
+      const newRotation = 360;
       
       setWinner(finalWinner);
       setShowModal(true);
