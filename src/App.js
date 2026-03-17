@@ -70,7 +70,8 @@ function App() {
     setTimeout(() => {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
-      const winningIndex = Math.floor((360 - actualDegrees) / segmentDegrees) % items.length;
+      // Add 90 to the top, then wrap it with % 360 to keep it in the circle
+const winningIndex = Math.floor(((360 - actualDegrees) + 90) % 360 / segmentDegrees);
       const finalWinner = items[winningIndex];
       
       setWinner(finalWinner);
