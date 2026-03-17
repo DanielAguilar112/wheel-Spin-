@@ -70,8 +70,8 @@ function App() {
     setTimeout(() => {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
-      // Add 90 to the top, then wrap it with % 360 to keep it in the circle
-const winningIndex = Math.floor(((360 - actualDegrees) + 90) % 360 / segmentDegrees);
+      // Subtract 90 to move the "logical pointer" from the right (3 o'clock) to the top (12 o'clock)
+const winningIndex = Math.floor(((360 - actualDegrees + 270) % 360) / segmentDegrees);
       const finalWinner = items[winningIndex];
       
       setWinner(finalWinner);
