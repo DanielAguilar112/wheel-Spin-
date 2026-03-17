@@ -17,17 +17,7 @@
 
 /* The actual pop-up box */
 .modal-content {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  max-width: 400px;
-  width: 100%;
-}
-
-.modal-content {
-  background: #1e1e1e; /* Darker modal background */
+  background: #1e1e1e;
   color: white;
   padding: 40px;
   border-radius: 25px;
@@ -52,6 +42,7 @@
   cursor: pointer;
   font-weight: bold;
 }
+
 .add-category-form {
   margin-bottom: 30px;
   display: flex;
@@ -92,7 +83,7 @@
 }
 
 .category-card {
-  background: #1e1e1e;      /* Dark Gray */
+  background: #1e1e1e;
   color: #ffffff;
   padding: 30px;
   border-radius: 15px;
@@ -110,7 +101,6 @@
   border-color: #a29bfe;
 }
 
-/* 3. Inputs and Buttons */
 input {
   padding: 12px;
   border-radius: 8px;
@@ -134,12 +124,11 @@ input::placeholder {
   cursor: pointer;
 }
 
-/* App.css */
 .container {
   text-align: center;
   padding: 20px;
-  background-color: #121212; /* Deep Black */
-  color: #ffffff;           /* White text */
+  background-color: #121212;
+  color: #ffffff;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -166,18 +155,18 @@ input::placeholder {
   border-radius: 50%;
   border: 8px solid #333;
   position: relative;
+  /* NO transition here — Framer Motion handles all animation */
 }
 
 .slice-label {
   position: absolute;
   top: 0;
   left: 50%;
-  height: 50%; /* This reaches from the outer rim to the center */
+  height: 50%;
   width: 1px;
-  transform-origin: bottom center; /* Pivot point is the wheel center */
+  transform-origin: bottom center;
   display: flex;
-  /* CHANGED: flex-start pulls text toward the outer rim */
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
   pointer-events: none;
 }
@@ -187,11 +176,10 @@ input::placeholder {
   color: white;
   font-weight: bold;
   font-size: 14px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,1); /* Stronger shadow for black bg */
+  text-shadow: 2px 2px 4px rgba(0,0,0,1);
   writing-mode: vertical-rl;
   text-transform: uppercase;
 }
-
 
 .spin-button {
   padding: 15px 40px;
@@ -220,7 +208,6 @@ input::placeholder {
   max-width: 300px;
 }
 
-/* 4. Item List (Below the wheel) */
 .item-card {
   display: flex;
   justify-content: space-between;
@@ -238,18 +225,3 @@ input::placeholder {
   font-weight: bold;
 }
 
-.wheel-container { position: relative; width: 320px; height: 320px; margin: 40px auto; }
-.wheel {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  position: relative;
-  overflow: hidden;
-  /* ADD THIS LINE BELOW */
-  transform: rotate(-30deg); 
-  transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
-}
-.pointer { position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 100; font-size: 40px; }
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-.close-modal-btn { background: #6c5ce7; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin-top: 20px; }
