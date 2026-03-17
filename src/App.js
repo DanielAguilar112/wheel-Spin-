@@ -64,7 +64,7 @@ function App() {
   const spinWheel = () => {
     // 1. Calculate a random spin (at least 5 full rotations + random)
     const extraDegrees = Math.floor(Math.random() * 360);
-    const newRotation = rotation + 1800 + extraDegrees;
+    const newRotation = 3600;
     
     setRotation(newRotation);
     setWinner(null);
