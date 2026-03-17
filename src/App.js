@@ -77,8 +77,7 @@ function App() {
 
 // 1. (360 - actualDegrees) flips the direction to match clockwise spinning
 // 2. + 90 shifts the "start line" from the right side up to your top pin
-      const winningIndex = Math.floor(((360 - actualDegrees + 90) % 360) / segmentDegrees);
-
+      const winningIndex = Math.floor(((360 - (newRotation % 360) + 90) % 360) / segmentDegrees);
       const finalWinner = items[winningIndex];
       
       setWinner(finalWinner);
