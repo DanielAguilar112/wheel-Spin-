@@ -70,9 +70,8 @@ function App() {
     setTimeout(() => {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
-      // Subtract 90 to move the "logical pointer" from the right (3 o'clock) to the top (12 o'clock)
-const winningIndex = Math.floor(((360 - actualDegrees + 270) % 360) / segmentDegrees);
-      const finalWinner = items[winningIndex];
+      // The 90 accounts for the pin being at the top (12 o'clock)
+const winningIndex = Math.floor(((actualDegrees + 90) % 360) / segmentDegrees);
       
       setWinner(finalWinner);
       setShowModal(true);
