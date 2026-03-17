@@ -68,8 +68,11 @@ function App() {
     const winningIndex = Math.floor(Math.random() * items.length);
     const segmentDegrees = 360 / items.length;
 
-    // Calculate the angle of the winning segment's center
-    const segmentCenter = winningIndex * segmentDegrees + segmentDegrees / 2;
+    // Add a random offset within the segment, but keep 15% padding from each edge
+    // so it never lands right on the border (which would feel like a cheat)
+    const padding = segmentDegrees * 0.15;
+    const randomOffset = (Math.random() * (segmentDegrees - padding * 2)) - (segmentDegrees / 2 - padding);
+    const segmentCenter = winningIndex * segmentDegrees + segmentDegrees / 2 + randomOffset;
 
     // We want the pointer (at 0deg / top) to align with segmentCenter.
     // The wheel rotates clockwise, so we need to rotate it so that
