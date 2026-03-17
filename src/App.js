@@ -62,21 +62,28 @@ function App() {
   };
 
   const spinWheel = () => {
-    // 1. Calculate a random spin (at least 5 full rotations + random)
-    const newRotation = rotation + 1800 + Math.floor(Math.random() * 360);
-    
+    // 1. Pick a random target segment first, then calculate the rotation to land on it
+    const winningIndex = Math.floor(Math.random() * items.length);
+    const segmentDegrees = 360 / items.length;
+
+    // Calculate the angle of the winning segment's center
+    const segmentCenter = winningIndex * segmentDegrees + segmentDegrees / 2;
+
+    // We want the pointer (at 0deg / top) to align with segmentCenter.
+    // The wheel rotates clockwise, so we need to rotate it so that
+    // segmentCenter ends up at the top (0deg).
+    const targetAngle = 360 - segmentCenter;
+
+    // Add enough full rotations (5) so it spins visibly, and strip the
+    // accumulated offset from previous spins using (rotation % 360).
+    const newRotation = rotation - (rotation % 360) + targetAngle + 360 * 5;
+
     setRotation(newRotation);
     setWinner(null);
     setShowModal(false);
 
-    // 2. Wait for the 4-second animation to finish
+    // 2. Wait for the 4-second animation to finish, then reveal winner
     setTimeout(() => {
-      const segmentDegrees = 360 / items.length;
-      
-      // The "+ 90" aligns the math with your top-center (12 o'clock) red pin.
-      // We use (360 - ...) because the wheel rotates clockwise.
-      const winningIndex = Math.floor(((360 - (newRotation % 360) + 90) % 360) / segmentDegrees);
-      
       setWinner(items[winningIndex]);
       setShowModal(true);
 
@@ -170,7 +177,7 @@ function App() {
         <div className="pointer">📍</div>
         <motion.div
           animate={{ rotate: rotation }}
-          transition={{ type: 'spring', duration: 4, bounce: 0.1 }}
+          transition={{ duration: 4, ease: [0.17, 0.67, 0.35, 1.0] }}
           className="wheel"
           style={{
             background: `conic-gradient(${items.map((_, i) => 
