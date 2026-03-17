@@ -62,47 +62,53 @@ function App() {
   };
 
   const spinWheel = () => {
-    const newRotation = rotation + 1800 + Math.floor(Math.random() * 360);
+    // 1. Calculate a random spin (at least 5 full rotations + random)
+    const extraDegrees = Math.floor(Math.random() * 360);
+    const newRotation = rotation + 1800 + extraDegrees;
+    
     setRotation(newRotation);
     setWinner(null);
     setShowModal(false);
 
+    // 2. Wait for the 4-second animation to finish
     setTimeout(() => {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
-      // The 90 accounts for the pin being at the top (12 o'clock)
-      const newRotation = 360;
+      
+      // Calculate the winning index with the 270-degree offset for the top pin
+      const winningIndex = Math.floor(((360 - actualDegrees + 270) % 360) / segmentDegrees);
+      const finalWinner = items[winningIndex];
       
       setWinner(finalWinner);
       setShowModal(true);
 
       // --- SIDE CANNON CONFETTI ---
-      const end = Date.now() + (2 * 1000); // Fire for 2 seconds
+      const end = Date.now() + (2 * 1000); 
 
       (function frame() {
         confetti({
           particleCount: 3,
           angle: 60,
           spread: 55,
-          origin: { x: 0, y: 0.6 }, // Left side
+          origin: { x: 0, y: 0.6 },
           colors: COLORS,
-          zIndex: 2000 // Puts it ABOVE the modal
+          zIndex: 2000 
         });
 
-     confetti({
+        confetti({
           particleCount: 3,
           angle: 120,
           spread: 55,
-          origin: { x: 1, y: 0.6 }, // Right side
+          origin: { x: 1, y: 0.6 },
           colors: COLORS,
-          zIndex: 2000 // Puts it ABOVE the modal
+          zIndex: 2000 
         });
 
         if (Date.now() < end) {
           requestAnimationFrame(frame);
         }
       }());
-    }, 4000);
+    }, 4000); // Matches the 'duration: 4' in your motion.div transition
   };
 
   // POP-UP COMPONENT
