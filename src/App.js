@@ -75,9 +75,8 @@ function App() {
       const actualDegrees = newRotation % 360;
       const segmentDegrees = 360 / items.length;
       
-      // Calculate the winning index with the 270-degree offset for the top pin
-      const winningIndex = Math.floor(((360 - actualDegrees + 270) % 360) / segmentDegrees);
-      const finalWinner = items[winningIndex];
+    const winningIndex = Math.floor(((actualDegrees + 90) % 360) / segmentDegrees);
+const finalWinner = items[items.length - 1 - winningIndex];
       
       setWinner(finalWinner);
       setShowModal(true);
