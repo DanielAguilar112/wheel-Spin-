@@ -63,8 +63,7 @@ function App() {
 
   const spinWheel = () => {
     // 1. Calculate a random spin (at least 5 full rotations + random)
-    const extraDegrees = Math.floor(Math.random() * 360);
-    const newRotation = 3600;
+    const newRotation = rotation + 1800 + Math.floor(Math.random() * 360);
     
     setRotation(newRotation);
     setWinner(null);
@@ -73,13 +72,12 @@ function App() {
     // 2. Wait for the 4-second animation to finish
     setTimeout(() => {
       const segmentDegrees = 360 / items.length;
-
-// 1. (360 - actualDegrees) flips the direction to match clockwise spinning
-// 2. + 90 shifts the "start line" from the right side up to your top pin
-      const winningIndex = Math.floor(((360 - (newRotation % 360) + 90) % 360) / segmentDegrees);
-  const finalWinner = items[winningIndex];
       
-      setWinner(finalWinner);
+      // The "+ 90" aligns the math with your top-center (12 o'clock) red pin.
+      // We use (360 - ...) because the wheel rotates clockwise.
+      const winningIndex = Math.floor(((360 - (newRotation % 360) + 90) % 360) / segmentDegrees);
+      
+      setWinner(items[winningIndex]);
       setShowModal(true);
 
       // --- SIDE CANNON CONFETTI ---
@@ -108,7 +106,7 @@ function App() {
           requestAnimationFrame(frame);
         }
       }());
-    }, 4000); // Matches the 'duration: 4' in your motion.div transition
+    }, 4000); 
   };
 
   // POP-UP COMPONENT
